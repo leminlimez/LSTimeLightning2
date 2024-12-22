@@ -1,0 +1,58 @@
+---
+triple:          'arm64e-apple-darwin'
+binary-path:     '/Users/lemin/Documents/GitHub/GitHub/LSTimeLightning/.theos/obj/debug/arm64e/LSTimeLightning.dylib'
+relocations:
+  - { offset: 0x1E, size: 0x8, addend: 0x0, symName: __Z7isIOS15v, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xD0 }
+  - { offset: 0x37, size: 0x8, addend: 0x0, symName: _AudioCanvasChange, symObjAddr: 0x4CB0, symBinAddr: 0x10250, symSize: 0x0 }
+  - { offset: 0xAA, size: 0x8, addend: 0x0, symName: _AudioCanvasChange2, symObjAddr: 0x4CB8, symBinAddr: 0x10258, symSize: 0x0 }
+  - { offset: 0xBF, size: 0x8, addend: 0x0, symName: _isUsingADO, symObjAddr: 0xFE38, symBinAddr: 0x10260, symSize: 0x0 }
+  - { offset: 0xE6, size: 0x8, addend: 0x0, symName: _isEnable, symObjAddr: 0xFE39, symBinAddr: 0x10261, symSize: 0x0 }
+  - { offset: 0xFB, size: 0x8, addend: 0x0, symName: _timeFormat, symObjAddr: 0xFE40, symBinAddr: 0x10268, symSize: 0x0 }
+  - { offset: 0x110, size: 0x8, addend: 0x0, symName: _timeFormatCase, symObjAddr: 0xFE48, symBinAddr: 0x10270, symSize: 0x0 }
+  - { offset: 0x12C, size: 0x8, addend: 0x0, symName: __ZL12secondsTimer, symObjAddr: 0xFE58, symBinAddr: 0x10280, symSize: 0x0 }
+  - { offset: 0x1F2, size: 0x8, addend: 0x0, symName: _secondsTimer2, symObjAddr: 0xFE50, symBinAddr: 0x10278, symSize: 0x0 }
+  - { offset: 0x21A, size: 0x8, addend: 0x0, symName: '__ZL54_logos_orig$iOS15$SBFLockScreenDateView$layoutSubviews', symObjAddr: 0xFE60, symBinAddr: 0x10288, symSize: 0x0 }
+  - { offset: 0xB51, size: 0x8, addend: 0x0, symName: '__ZL72_logos_orig$iOS16$SBDashBoardBiometricUnlockController$setAuthenticated$', symObjAddr: 0xFE68, symBinAddr: 0x10290, symSize: 0x0 }
+  - { offset: 0xB90, size: 0x8, addend: 0x0, symName: '__ZL47_logos_orig$iOS16$SBBacklightController$dealloc', symObjAddr: 0xFE70, symBinAddr: 0x10298, symSize: 0x0 }
+  - { offset: 0xBCA, size: 0x8, addend: 0x0, symName: '__ZL84_logos_orig$iOS16$SBBacklightController$backlight$didCompleteUpdateToState$forEvent$', symObjAddr: 0xFE78, symBinAddr: 0x102A0, symSize: 0x0 }
+  - { offset: 0xC0A, size: 0x8, addend: 0x0, symName: '__ZL66_logos_orig$iOS16$CSProminentDisplayViewController$viewWillAppear$', symObjAddr: 0xFE80, symBinAddr: 0x102A8, symSize: 0x0 }
+  - { offset: 0x12DB, size: 0x8, addend: 0x0, symName: '__ZL58_logos_orig$iOS16$CSProminentDisplayViewController$dealloc', symObjAddr: 0xFE88, symBinAddr: 0x102B0, symSize: 0x0 }
+  - { offset: 0x1305, size: 0x8, addend: 0x0, symName: '__ZL52_logos_orig$iOS16$CSProminentTimeView$layoutSubviews', symObjAddr: 0xFE90, symBinAddr: 0x102B8, symSize: 0x0 }
+  - { offset: 0x1C01, size: 0x8, addend: 0x0, symName: __Z7isIOS15v, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xD0 }
+  - { offset: 0x1C2D, size: 0x8, addend: 0x0, symName: __Z7isIOS16v, symObjAddr: 0xD0, symBinAddr: 0x40D0, symSize: 0xD0 }
+  - { offset: 0x1C59, size: 0x8, addend: 0x0, symName: '__ZL71_logos_property$iOS16$CSProminentDisplayViewController$isShowingSecondsP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x1A0, symBinAddr: 0x41A0, symSize: 0xF8 }
+  - { offset: 0x1CAF, size: 0x8, addend: 0x0, symName: '__ZL74_logos_property$iOS16$CSProminentDisplayViewController$setIsShowingSecondsP32CSProminentDisplayViewControllerP13objc_selectorb', symObjAddr: 0x298, symBinAddr: 0x4298, symSize: 0x10C }
+  - { offset: 0x1D01, size: 0x8, addend: 0x0, symName: __Z9loadPrefsv, symObjAddr: 0x3A4, symBinAddr: 0x43A4, symSize: 0x1AC }
+  - { offset: 0x1D2B, size: 0x8, addend: 0x0, symName: __ZL24_logosLocalCtor_fd5b0d78iPPcS0_, symObjAddr: 0x550, symBinAddr: 0x4550, symSize: 0xEAC }
+  - { offset: 0x2083, size: 0x8, addend: 0x0, symName: '__ZL56_logos_method$iOS15$SBFLockScreenDateView$layoutSubviewsP21SBFLockScreenDateViewP13objc_selector', symObjAddr: 0x13FC, symBinAddr: 0x53FC, symSize: 0xC0 }
+  - { offset: 0x20B9, size: 0x8, addend: 0x0, symName: '__ZL52_logos_method$iOS15$SBFLockScreenDateView$handleTap$P21SBFLockScreenDateViewP13objc_selectorP22UITapGestureRecognizer', symObjAddr: 0x14BC, symBinAddr: 0x54BC, symSize: 0x3A4 }
+  - { offset: 0x213E, size: 0x8, addend: 0x0, symName: '__ZL61_logos_method$iOS15$SBFLockScreenDateView$expectedLabelWidth$P21SBFLockScreenDateViewP13objc_selectorP19SBUILegibilityLabel', symObjAddr: 0x1860, symBinAddr: 0x5860, symSize: 0x238 }
+  - { offset: 0x2195, size: 0x8, addend: 0x0, symName: '__ZL57_logos_method$iOS15$SBFLockScreenDateView$updateTimeLabelP21SBFLockScreenDateViewP13objc_selector', symObjAddr: 0x1A98, symBinAddr: 0x5A98, symSize: 0x350 }
+  - { offset: 0x2204, size: 0x8, addend: 0x0, symName: '__ZL74_logos_method$iOS16$SBDashBoardBiometricUnlockController$setAuthenticated$P36SBDashBoardBiometricUnlockControllerP13objc_selectorb', symObjAddr: 0x1DE8, symBinAddr: 0x5DE8, symSize: 0xAC }
+  - { offset: 0x2248, size: 0x8, addend: 0x0, symName: '__ZL49_logos_method$iOS16$SBBacklightController$deallocP21SBBacklightControllerP13objc_selector', symObjAddr: 0x1E94, symBinAddr: 0x5E94, symSize: 0xF8 }
+  - { offset: 0x227E, size: 0x8, addend: 0x0, symName: '__ZL86_logos_method$iOS16$SBBacklightController$backlight$didCompleteUpdateToState$forEvent$P21SBBacklightControllerP13objc_selectorP11objc_objectxS4_', symObjAddr: 0x1F8C, symBinAddr: 0x5F8C, symSize: 0x1D4 }
+  - { offset: 0x22EC, size: 0x8, addend: 0x0, symName: '__ZL68_logos_method$iOS16$CSProminentDisplayViewController$viewWillAppear$P32CSProminentDisplayViewControllerP13objc_selectorb', symObjAddr: 0x2160, symBinAddr: 0x6160, symSize: 0x190 }
+  - { offset: 0x2330, size: 0x8, addend: 0x0, symName: '__ZL71_logos_method$iOS16$CSProminentDisplayViewController$setupOrUpdateTimerP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x22F0, symBinAddr: 0x62F0, symSize: 0xA0 }
+  - { offset: 0x2366, size: 0x8, addend: 0x0, symName: '__ZL76_logos_method$iOS16$CSProminentDisplayViewController$nonProIphonesWithoutAODP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x2390, symBinAddr: 0x6390, symSize: 0x2D0 }
+  - { offset: 0x23FB, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$iOS16$CSProminentDisplayViewController$deviceUnlockedP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x2660, symBinAddr: 0x6660, symSize: 0x34 }
+  - { offset: 0x2434, size: 0x8, addend: 0x0, symName: '__ZL65_logos_method$iOS16$CSProminentDisplayViewController$deviceLockedP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x2694, symBinAddr: 0x6694, symSize: 0x34 }
+  - { offset: 0x246D, size: 0x8, addend: 0x0, symName: '__ZL74_logos_method$iOS16$CSProminentDisplayViewController$updateTimerInterval2$P32CSProminentDisplayViewControllerP13objc_selectord', symObjAddr: 0x26C8, symBinAddr: 0x66C8, symSize: 0xEC }
+  - { offset: 0x24B5, size: 0x8, addend: 0x0, symName: '__ZL73_logos_method$iOS16$CSProminentDisplayViewController$updateTimerInterval$P32CSProminentDisplayViewControllerP13objc_selectord', symObjAddr: 0x27B4, symBinAddr: 0x67B4, symSize: 0xEC }
+  - { offset: 0x24FD, size: 0x8, addend: 0x0, symName: '__ZL60_logos_method$iOS16$CSProminentDisplayViewController$deallocP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x28A0, symBinAddr: 0x68A0, symSize: 0x170 }
+  - { offset: 0x2536, size: 0x8, addend: 0x0, symName: '__ZL77_logos_method$iOS16$CSProminentDisplayViewController$updateTimeWithoutSecondsP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x2A10, symBinAddr: 0x6A10, symSize: 0x38 }
+  - { offset: 0x256F, size: 0x8, addend: 0x0, symName: '__ZL68_logos_method$iOS16$CSProminentDisplayViewController$updateTimeLabelP32CSProminentDisplayViewControllerP13objc_selector', symObjAddr: 0x2A48, symBinAddr: 0x6A48, symSize: 0x8A0 }
+  - { offset: 0x2727, size: 0x8, addend: 0x0, symName: '__ZL69_logos_method$iOS16$CSProminentDisplayViewController$updateTimeLabel$P32CSProminentDisplayViewControllerP13objc_selectorb', symObjAddr: 0x32E8, symBinAddr: 0x72E8, symSize: 0xB4 }
+  - { offset: 0x2784, size: 0x8, addend: 0x0, symName: '__ZL59_logos_method$iOS16$CSProminentTimeView$expectedLabelWidth$P19CSProminentTimeViewP13objc_selectorP7UILabel', symObjAddr: 0x339C, symBinAddr: 0x739C, symSize: 0x238 }
+  - { offset: 0x27E0, size: 0x8, addend: 0x0, symName: '__ZL54_logos_method$iOS16$CSProminentTimeView$layoutSubviewsP19CSProminentTimeViewP13objc_selector', symObjAddr: 0x35D4, symBinAddr: 0x75D4, symSize: 0x468 }
+  - { offset: 0x2877, size: 0x8, addend: 0x0, symName: __ZL10CGRectMakedddd, symObjAddr: 0x3A3C, symBinAddr: 0x7A3C, symSize: 0x4C }
+  - { offset: 0x28E1, size: 0x8, addend: 0x0, symName: __ZL10MSHookIvarIU8__strongP19CSProminentTimeViewERT_P11objc_objectPKc, symObjAddr: 0x3A88, symBinAddr: 0x7A88, symSize: 0xFC }
+  - { offset: 0x2940, size: 0x8, addend: 0x0, symName: __ZL10MSHookIvarIU8__strongP15NSDateFormatterERT_P11objc_objectPKc, symObjAddr: 0x3B84, symBinAddr: 0x7B84, symSize: 0xFC }
+  - { offset: 0x299F, size: 0x8, addend: 0x0, symName: '____ZL68_logos_method$iOS16$CSProminentDisplayViewController$updateTimeLabelP32CSProminentDisplayViewControllerP13objc_selector_block_invoke', symObjAddr: 0x3C80, symBinAddr: 0x7C80, symSize: 0x44 }
+  - { offset: 0x29ED, size: 0x8, addend: 0x0, symName: ___copy_helper_block_ea8_32s40s, symObjAddr: 0x3CC4, symBinAddr: 0x7CC4, symSize: 0x5C }
+  - { offset: 0x2A11, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_ea8_32s40s, symObjAddr: 0x3D20, symBinAddr: 0x7D20, symSize: 0x48 }
+  - { offset: 0x2A2D, size: 0x8, addend: 0x0, symName: '____ZL68_logos_method$iOS16$CSProminentDisplayViewController$updateTimeLabelP32CSProminentDisplayViewControllerP13objc_selector_block_invoke.101', symObjAddr: 0x3D68, symBinAddr: 0x7D68, symSize: 0x7C }
+  - { offset: 0x2A9C, size: 0x8, addend: 0x0, symName: '____ZL69_logos_method$iOS16$CSProminentDisplayViewController$updateTimeLabel$P32CSProminentDisplayViewControllerP13objc_selectorb_block_invoke', symObjAddr: 0x3DE4, symBinAddr: 0x7DE4, symSize: 0x51C }
+  - { offset: 0x2B3E, size: 0x8, addend: 0x0, symName: '____ZL69_logos_method$iOS16$CSProminentDisplayViewController$updateTimeLabel$P32CSProminentDisplayViewControllerP13objc_selectorb_block_invoke_2', symObjAddr: 0x4300, symBinAddr: 0x8300, symSize: 0x58 }
+  - { offset: 0x2BB0, size: 0x8, addend: 0x0, symName: ___copy_helper_block_ea8_32s40s48s56s, symObjAddr: 0x4358, symBinAddr: 0x8358, symSize: 0x8C }
+  - { offset: 0x2BD4, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_ea8_32s40s48s56s, symObjAddr: 0x43E4, symBinAddr: 0x83E4, symSize: 0x68 }
+...
