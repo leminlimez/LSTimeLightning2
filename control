@@ -1,8 +1,8 @@
 Package: com.leemin.lstimelightning16
-Name: LSTimeLightning (iOS 15 - 16)
-Version: 0.1.0
+Name: Lightning Time
+Version: 0.2.0
 Architecture: iphoneos-arm
-Description: Adds lightning time to lockscreen time.
+Description: Adds lightning time to lockscreen time and status bar.
 Maintainer: lemin
 Author: lemin
 Section: Tweaks

@@ -10,9 +10,6 @@
 BOOL isEnable = NO;
 
 %hook CSProminentTimeView
-- (id)_correctedDateFormat{
-    return [NSString stringWithFormat:@"hh ~ mm | ss"];
-}
 - (id)_timeString{
     // code is bad but am lazy
 
