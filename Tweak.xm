@@ -10,7 +10,7 @@
 BOOL lsEnabled = YES;
 BOOL sbEnabled = YES;
 
-id getFormatted() {
+id getFormatted(bool seconds) {
     // code is bad but am lazy
 
     // convert to lightning
@@ -46,15 +46,58 @@ id getFormatted() {
     NSString *boltsHex = [NSString stringWithFormat:@"%lX", (long)bolts];
 
     // Concatenate the final lightning string
-    return [NSString stringWithFormat:@"%@~%@~%@|%@", boltsHex, zapsHex, sparksHex, chargesHex];
+    if (seconds) {
+        return [NSString stringWithFormat:@"%@~%@~%@|%@", boltsHex, zapsHex, sparksHex, chargesHex];
+    } else {
+        return [NSString stringWithFormat:@"%@~%@~%@", boltsHex, zapsHex, sparksHex];
+    }
 }
 
 %hook CSProminentTimeView
 - (id)_timeString {
     if (lsEnabled) {
-        return getFormatted();
+        return getFormatted(true);
     }
     return %orig;
+}
+%end
+
+@interface _UIStatusBarData : NSObject
+@property (copy, nonatomic) _UIStatusBarDataStringEntry *timeEntry;
+@property (copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry;
+@end
+
+@interface _UIStatusBarDataStringEntry : NSObject
+@property (nonatomic, assign) BOOL isTimeEntry;
+@property (nonatomic, copy, readwrite) NSString *stringValue;
+@end
+
+%hook _UIStatusBarDataStringEntry
+%property (nonatomic, assign) BOOL isTimeEntry;
+
+- (id)stringValue{
+    if(self.isTimeEntry == YES){
+        return getFormatted(false);
+    }
+    return %orig;
+}
+%end
+
+%hook _UIStatusBarData
+-(void)setShortTimeEntry:(_UIStatusBarDataStringEntry*)arg0{
+    arg0.isTimeEntry = YES;
+    %orig;
+}
+
+-(void)setTimeEntry:(_UIStatusBarDataStringEntry*)arg0{
+    arg0.isTimeEntry = YES;
+    %orig;
+}
+
+-(void)_applyUpdate:(_UIStatusBarData*)arg0 keys:(id)arg1{
+    self.timeEntry.isTimeEntry = YES;
+    self.shortTimeEntry.isTimeEntry = YES;
+    %orig;
 }
 %end
 
