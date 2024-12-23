@@ -52,57 +52,32 @@ NSString* getFormatted(bool seconds) {
 }
 %end
 
-%hook _UIStatusBarDataStringEntry
-%property (nonatomic, assign) BOOL litt_isTimeEntry;
+%hook _UIStatusBarTimeItem
+- (void)_create_timeView{
+    %orig;
+    self.timeView.litt_isTimeString = YES;
+}
 
-- (id)stringValue{
-    if(self.litt_isTimeEntry == YES){
-        return getFormatted(false);
-    }
-    return %orig;
+- (void)_create_shortTimeView{
+    %orig;
+    self.shortTimeView.litt_isTimeString = YES;
+}
+
+- (void)_create_pillTimeView{
+    %orig;
+    self.pillTimeView.litt_isTimeString = YES;
 }
 %end
 
-%hook _UIStatusBarData
--(void)setShortTimeEntry:(_UIStatusBarDataStringEntry*)arg0{
-	[self applyIsTimeEntryToTimesEntries];
-	%orig;
-}
+%hook _UIStatusBarStringView
+%property (nonatomic, assign) BOOL litt_isTimeString;
 
--(void)setTimeEntry:(_UIStatusBarDataStringEntry*)arg0{
-	[self applyIsTimeEntryToTimesEntries];
-	%orig;
-}
-
--(void)_applyUpdate:(_UIStatusBarData*)arg0 keys:(id)arg1{
-	%orig;
-	[self applyIsTimeEntryToTimesEntries];
-}
-
--(id)updateFromData:(id)arg0{
-	[self applyIsTimeEntryToTimesEntries];
-	return %orig;
-}
-
--(void)applyUpdate:(id)arg0{
-	%orig;
-	[self applyIsTimeEntryToTimesEntries];
-}
-
--(id)dataByApplyingUpdate:(id)arg0 keys:(id)arg1{
-	[self applyIsTimeEntryToTimesEntries];
-	return %orig;
-}
-
--(void)makeUpdateFromData:(id)arg0{
-	%orig;
-	[self applyIsTimeEntryToTimesEntries];
-}
-
-%new
-- (void)applyIsTimeEntryToTimesEntries{
-	self.timeEntry.litt_isTimeEntry = YES;
-	self.shortTimeEntry.litt_isTimeEntry = YES;
+- (void)setText:(NSString *)text{
+    if(self.litt_isTimeString){
+        %orig(getFormatted(false));
+        return;
+    }
+    %orig;
 }
 %end
 
