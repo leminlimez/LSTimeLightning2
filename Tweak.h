@@ -7,16 +7,17 @@
 #import <objc/runtime.h>
 #import <substrate.h>
 
-@interface _UIStatusBarData : NSObject
-@property (copy, nonatomic) _UIStatusBarDataStringEntry *timeEntry;
-@property (copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry;
-@end
-
 @interface _UIStatusBarDataStringEntry : NSObject
-@property (nonatomic, assign) BOOL isTimeEntry;
+@property (nonatomic, assign) BOOL litt_isTimeEntry;
 @property (nonatomic, copy, readwrite) NSString *stringValue;
 @end
 
+@interface _UIStatusBarData : NSObject
+@property (copy, nonatomic) _UIStatusBarDataStringEntry *timeEntry;
+@property (copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry;
+- (void)applyIsTimeEntryToTimesEntries;
+@end
+
 @interface SBFLockScreenDateViewController : UIViewController
-@property(nonatomic, strong) NSTimer *sm_timer;
+@property(nonatomic, strong) NSTimer *litt_timer;
 @end
