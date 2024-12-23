@@ -7,10 +7,10 @@
 #import <objc/runtime.h>
 #import <substrate.h>
 
-BOOL isEnable = NO;
+BOOL lsEnabled = YES;
+BOOL sbEnabled = YES;
 
-%hook CSProminentTimeView
-- (id)_timeString{
+id getFormatted() {
     // code is bad but am lazy
 
     // convert to lightning
@@ -48,6 +48,14 @@ BOOL isEnable = NO;
     // Concatenate the final lightning string
     return [NSString stringWithFormat:@"%@~%@~%@|%@", boltsHex, zapsHex, sparksHex, chargesHex];
 }
+
+%hook CSProminentTimeView
+- (id)_timeString {
+    if (lsEnabled) {
+        return getFormatted();
+    }
+    return %orig;
+}
 %end
 
 @interface SBFLockScreenDateViewController : UIViewController
@@ -72,3 +80,23 @@ BOOL isEnable = NO;
     [self.sm_timer invalidate];
 }
 %end
+
+#define tweakPlist ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.leemin.lightningprefs.plist")
+
+#define LISTEN_NOTIF(_call, _name) CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)_call, CFSTR(_name), NULL, CFNotificationSuspensionBehaviorCoalesce);
+
+ 
+void loadPrefs() {
+    // Fetch the NSUserDefaults for your tweak
+    NSDictionary *prefs = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.leemin.lightningprefs"];
+    if (prefs) {
+        lsEnabled = [prefs[@"lsEnabled"] boolValue];
+        sbEnabled = [prefs[@"sbEnabled"] boolValue];
+    }
+}
+
+%ctor {
+    loadPrefs();
+
+    LISTEN_NOTIF(loadPrefs, "com.leemin.lightningprefs/reloadPrefs")	
+}

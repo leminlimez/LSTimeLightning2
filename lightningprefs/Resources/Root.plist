@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+
+
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <true/>
+                <key>label</key>
+                <string>Enable on Lock Screen</string>
+                <key>key</key>
+                <string>lsEnabled</string>
+                <key>defaults</key>
+                <string>com.leemin.lightningprefs</string>
+                <key>id</key>
+                <string>lsEnabled</string>
+                <key>PostNotification</key>
+                <string>com.leemin.ocd/reloadPrefs</string>
+            </dict>
+
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <true/>
+                <key>label</key>
+                <string>Enable in Status Bar</string>
+                <key>key</key>
+                <string>sbEnabled</string>
+                <key>defaults</key>
+                <string>com.leemin.lightningprefs</string>
+                <key>id</key>
+                <string>sbEnabled</string>
+                <key>PostNotification</key>
+                <string>com.leemin.ocd/reloadPrefs</string>
+            </dict>
+
+
+
+	</array>
+	<key>title</key>
+	<string>Lightning Time</string>
+</dict>
+</plist>
