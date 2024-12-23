@@ -1,26 +1,18 @@
-// Importing the necessary headers for UIKit, custom rootless header, Foundation, CoreFoundation, and SpringBoard.
-#import <UIKit/UIKit.h>
-#import "rootless.h"
-#import <Foundation/Foundation.h>
-#import <CoreFoundation/CoreFoundation.h>
-#import <SpringBoard/SpringBoard.h>
-#import <objc/runtime.h>
-#import <substrate.h>
+#import "Tweak.h"
 
 BOOL lsEnabled = YES;
 BOOL sbEnabled = YES;
 
-id getFormatted(bool seconds) {
+NSString* getFormatted(bool seconds) {
     // code is bad but am lazy
-
     // convert to lightning
     // chatgpt moment
+
     // Get the current date and time
     NSDate *currentDate = [NSDate date];
     // Get the calendar and the current date components
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-                                            fromDate:currentDate];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:currentDate];
     // Create a new date object representing midnight (12:00 AM) today
     NSDate *midnightDate = [calendar dateFromComponents:components];
     // Calculate the time interval between now and midnight in seconds
@@ -55,28 +47,16 @@ id getFormatted(bool seconds) {
 
 %hook CSProminentTimeView
 - (id)_timeString {
-    if (lsEnabled) {
-        return getFormatted(true);
-    }
+    if (lsEnabled) return getFormatted(true);
     return %orig;
 }
 %end
 
-@interface _UIStatusBarData : NSObject
-@property (copy, nonatomic) _UIStatusBarDataStringEntry *timeEntry;
-@property (copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry;
-@end
-
-@interface _UIStatusBarDataStringEntry : NSObject
-@property (nonatomic, assign) BOOL isTimeEntry;
-@property (nonatomic, copy, readwrite) NSString *stringValue;
-@end
-
 %hook _UIStatusBarDataStringEntry
-%property (nonatomic, assign) BOOL isTimeEntry;
+%property (nonatomic, assign) BOOL litt_isTimeEntry;
 
 - (id)stringValue{
-    if(self.isTimeEntry == YES){
+    if(self.litt_isTimeEntry == YES){
         return getFormatted(false);
     }
     return %orig;
@@ -85,42 +65,63 @@ id getFormatted(bool seconds) {
 
 %hook _UIStatusBarData
 -(void)setShortTimeEntry:(_UIStatusBarDataStringEntry*)arg0{
-    arg0.isTimeEntry = YES;
-    %orig;
+	[self applyIsTimeEntryToTimesEntries];
+	%orig;
 }
 
 -(void)setTimeEntry:(_UIStatusBarDataStringEntry*)arg0{
-    arg0.isTimeEntry = YES;
-    %orig;
+	[self applyIsTimeEntryToTimesEntries];
+	%orig;
 }
 
 -(void)_applyUpdate:(_UIStatusBarData*)arg0 keys:(id)arg1{
-    self.timeEntry.isTimeEntry = YES;
-    self.shortTimeEntry.isTimeEntry = YES;
-    %orig;
+	%orig;
+	[self applyIsTimeEntryToTimesEntries];
+}
+
+-(id)updateFromData:(id)arg0{
+	[self applyIsTimeEntryToTimesEntries];
+	return %orig;
+}
+
+-(void)applyUpdate:(id)arg0{
+	%orig;
+	[self applyIsTimeEntryToTimesEntries];
+}
+
+-(id)dataByApplyingUpdate:(id)arg0 keys:(id)arg1{
+	[self applyIsTimeEntryToTimesEntries];
+	return %orig;
+}
+
+-(void)makeUpdateFromData:(id)arg0{
+	%orig;
+	[self applyIsTimeEntryToTimesEntries];
+}
+
+%new
+- (void)applyIsTimeEntryToTimesEntries{
+	self.timeEntry.litt_isTimeEntry = YES;
+	self.shortTimeEntry.litt_isTimeEntry = YES;
 }
 %end
 
-@interface SBFLockScreenDateViewController : UIViewController
-@property(nonatomic, strong) NSTimer *sm_timer;
-@end
+%hook SBFLockScreenDateViewController // tesla_man
+%property(nonatomic, strong) NSTimer *litt_timer;
 
-%hook SBFLockScreenDateViewController
-%property(nonatomic, strong) NSTimer *sm_timer;
-
--(void)_startUpdateTimer{
+- (void)_startUpdateTimer{
     %orig;
     NSDate *now = [NSDate date];
     double fractionalSeconds = fmod([now timeIntervalSince1970], 1.0); //thx gpt
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, fractionalSeconds * NSEC_PER_SEC), dispatch_get_main_queue(), ^{    
-        self.sm_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimeNow) userInfo:nil repeats:YES];
+        self.litt_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimeNow) userInfo:nil repeats:YES];
     });
 }
 
--(void)_stopUpdateTimer{
+- (void)_stopUpdateTimer{
     %orig;
-    [self.sm_timer invalidate];
+    [self.litt_timer invalidate];
 }
 %end
 
