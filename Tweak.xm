@@ -114,6 +114,8 @@ NSString* getFormatted(bool seconds) {
     NSDate *now = [NSDate date];
     double fractionalSeconds = fmod([now timeIntervalSince1970], 1.0); //thx gpt
 
+    [self.litt_timer invalidate];
+    self.litt_timer = nil
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, fractionalSeconds * NSEC_PER_SEC), dispatch_get_main_queue(), ^{    
         self.litt_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimeNow) userInfo:nil repeats:YES];
     });
@@ -122,6 +124,7 @@ NSString* getFormatted(bool seconds) {
 - (void)_stopUpdateTimer{
     %orig;
     [self.litt_timer invalidate];
+    self.litt_timer = nil
 }
 %end
 
