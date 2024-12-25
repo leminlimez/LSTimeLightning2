@@ -2,6 +2,7 @@
 
 BOOL lsEnabled = YES;
 BOOL sbEnabled = YES;
+double updateSpeed = 0.6;
 
 NSString* getFormatted(bool seconds) {
     // code is bad but am lazy
@@ -87,7 +88,7 @@ NSString* getFormatted(bool seconds) {
 - (void)_startUpdateTimer{
     %orig;
     NSDate *now = [NSDate date];
-    double fractionalSeconds = fmod([now timeIntervalSince1970], 1.0); //thx gpt
+    double fractionalSeconds = fmod([now timeIntervalSince1970], updateSpeed); //thx gpt
 
     [self.litt_timer invalidate];
     self.litt_timer = nil;
