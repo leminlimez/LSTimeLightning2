@@ -20,7 +20,7 @@
                 <key>id</key>
                 <string>lsEnabled</string>
                 <key>PostNotification</key>
-                <string>com.leemin.ocd/reloadPrefs</string>
+                <string>com.leemin.lightningprefs/reloadPrefs</string>
             </dict>
 
             <dict>
@@ -37,11 +37,49 @@
                 <key>id</key>
                 <string>sbEnabled</string>
                 <key>PostNotification</key>
-                <string>com.leemin.ocd/reloadPrefs</string>
+                <string>com.leemin.lightningprefs/reloadPrefs</string>
             </dict>
 
 
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string></string>
+                <key>footerText</key>
+                <string>Respring required for changes to apply.</string>
+                <key>footerAlignment</key>
+                <integer>1</integer>
+            </dict>
 
+            <dict>
+                <key>cell</key>
+                <string>PSSegmentCell</string>
+                <key>default</key>
+                <double>0.6</double>  
+                <key>defaults</key>
+                <string>com.leemin.lightningprefs</string>
+                <key>key</key>
+                <string>updateFreq</string>
+                <key>validTitles</key>
+                <array>
+                    <string>0.1s</string>
+                    <string>0.2s</string>
+                    <string>0.6s</string>
+                    <string>1.2s</string>
+                </array>
+                <key>validValues</key>
+                <array>
+                    <double>0.1</double>
+                    <double>0.2</double>
+                    <double>0.6</double>
+                    <double>1.2</double>
+                </array>
+                <key>label</key>
+                <string>Update Frequency</string>
+                <key>PostNotification</key>
+                <string>com.leemin.lightningprefs/reloadPrefs</string>
+            </dict>
 	</array>
 	<key>title</key>
 	<string>Lightning Time</string>
