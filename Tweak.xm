@@ -53,28 +53,10 @@ NSString* getFormatted(bool seconds) {
 }
 %end
 
-%hook _UIStatusBarTimeItem
-- (void)_create_timeView{
-    %orig;
-    self.timeView.litt_isTimeString = YES;
-}
-
-- (void)_create_shortTimeView{
-    %orig;
-    self.shortTimeView.litt_isTimeString = YES;
-}
-
-- (void)_create_pillTimeView{
-    %orig;
-    self.pillTimeView.litt_isTimeString = YES;
-}
-%end
-
 %hook _UIStatusBarStringView
-%property (nonatomic, assign) BOOL litt_isTimeString;
 
 - (void)setText:(NSString *)text{
-    if(self.litt_isTimeString){
+    if([self.text rangeOfString:@":"].location != NSNotFound){
         %orig(getFormatted(false));
         return;
     }
