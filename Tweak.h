@@ -4,7 +4,6 @@
 #import "rootless.h"
 
 #define MILLIS_PER_CHARGE 1318.359375
-#define DEBUG 1
 
 @interface SBFLockScreenDateViewController : UIViewController
 @property(nonatomic, strong) NSTimer *litt_timer;

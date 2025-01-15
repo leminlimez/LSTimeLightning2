@@ -3,8 +3,6 @@
 BOOL lsEnabled = YES;
 BOOL sbEnabled = YES;
 
-double lastTime = 0;
-
 double get_millis() {
     // Get the current date and time
     NSDate *currentDate = [NSDate date];
@@ -25,15 +23,7 @@ NSString* getFormatted(bool seconds) {
     // chatgpt moment
 
     // get the segments
-    double millis = get_millis();
-#if DEBUG
-    if (seconds) {
-        // log the difference in milliseconds
-        NSLog(@"Lightning Update! Time difference: %f", millis - lastTime);
-        lastTime = millis;
-    }
-#endif
-    double totalCharges = (millis / MILLIS_PER_CHARGE);
+    double totalCharges = (get_millis() / MILLIS_PER_CHARGE);
     double totalSparks = totalCharges / 16;
     double totalZaps = totalSparks / 16;
     double totalBolts = totalZaps / 16;
@@ -85,9 +75,9 @@ NSString* getFormatted(bool seconds) {
     double remainingTime = ((MILLIS_PER_CHARGE - fmod(get_millis(), MILLIS_PER_CHARGE)) * NSEC_PER_SEC) / 1000.0;
 
     [self.litt_timer invalidate];
-    self.litt_timer = nil; // TODO: the update method is called multiple times, this needs fixed
+    self.litt_timer = nil;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW + remainingTime, fractionalSeconds * NSEC_PER_SEC), dispatch_get_main_queue(), ^{    
-        self.litt_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimeNow) userInfo:nil repeats:YES];
+        self.litt_timer = [NSTimer scheduledTimerWithTimeInterval:(MILLIS_PER_CHARGE / 1000.0) target:self selector:@selector(updateTimeNow) userInfo:nil repeats:YES];
     });
 }
 
