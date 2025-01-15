@@ -2,6 +2,7 @@
 
 BOOL lsEnabled = YES;
 BOOL sbEnabled = YES;
+BOOL monospaced = YES; // TODO: Change to a font picker menu later
 
 double get_millis() {
     // Get the current date and time
@@ -54,6 +55,20 @@ NSString* getFormatted(bool seconds) {
 }
 %end
 
+@interface _UIAnimatingLabel : UILabel
+@end
+
+%hook _UIAnimatingLabel
+-(void)_setFont:(UIFont *)font {
+    if (lsEnabled && monospaced && [self.superview isKindOfClass: %c(CSProminentTimeView)]) {
+        // set to monospaced font Menlo Bold
+        %orig([UIFont fontWithName:@"Menlo-Bold" size:font.pointSize]);
+    } else {
+        %orig;
+    }
+}
+%end
+
 %hook _UIStatusBarStringView
 
 - (void)setText:(NSString *)text{
@@ -99,6 +114,7 @@ void loadPrefs() {
     if (prefs) {
         lsEnabled = [prefs[@"lsEnabled"] boolValue];
         sbEnabled = [prefs[@"sbEnabled"] boolValue];
+        monospaced = [prefs[@"monospaced"] boolValue];
     }
 }
 

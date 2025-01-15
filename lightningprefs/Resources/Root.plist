@@ -40,6 +40,23 @@
                 <string>com.leemin.lightningprefs/reloadPrefs</string>
             </dict>
 
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <true/>
+                <key>label</key>
+                <string>Enable Monospaced Font</string>
+                <key>key</key>
+                <string>monospaced</string>
+                <key>defaults</key>
+                <string>com.leemin.lightningprefs</string>
+                <key>id</key>
+                <string>monospaced</string>
+                <key>PostNotification</key>
+                <string>com.leemin.lightningprefs/reloadPrefs</string>
+            </dict>
+
 
             <dict>
                 <key>cell</key>
