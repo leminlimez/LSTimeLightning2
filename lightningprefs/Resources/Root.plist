@@ -51,35 +51,6 @@
                 <key>footerAlignment</key>
                 <integer>1</integer>
             </dict>
-
-            <dict>
-                <key>cell</key>
-                <string>PSSegmentCell</string>
-                <key>default</key>
-                <real>0.6</real>  
-                <key>defaults</key>
-                <string>com.leemin.lightningprefs</string>
-                <key>key</key>
-                <string>updateFreq</string>
-                <key>validTitles</key>
-                <array>
-                    <string>0.1s</string>
-                    <string>0.2s</string>
-                    <string>0.6s</string>
-                    <string>1.2s</string>
-                </array>
-                <key>validValues</key>
-                <array>
-                    <real>0.1</real>
-                    <real>0.2</real>
-                    <real>0.6</real>
-                    <real>1.2</real>
-                </array>
-                <key>label</key>
-                <string>Update Frequency</string>
-                <key>PostNotification</key>
-                <string>com.leemin.lightningprefs/reloadPrefs</string>
-            </dict>
 	</array>
 	<key>title</key>
 	<string>Lightning Time</string>
