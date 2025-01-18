@@ -35,10 +35,10 @@ NSString* getFormatted(bool seconds) {
     NSInteger bolts = (NSInteger)(floor(totalBolts)) % 16;
 
     // Convert to hex strings
-    NSString *chargesHex = [NSString stringWithFormat:@"%lX", (long)charges];
-    NSString *sparksHex = [NSString stringWithFormat:@"%lX", (long)sparks];
-    NSString *zapsHex = [NSString stringWithFormat:@"%lX", (long)zaps];
-    NSString *boltsHex = [NSString stringWithFormat:@"%lX", (long)bolts];
+    NSString *chargesHex = [NSString stringWithFormat:@"%lx", (long)charges];
+    NSString *sparksHex = [NSString stringWithFormat:@"%lx", (long)sparks];
+    NSString *zapsHex = [NSString stringWithFormat:@"%lx", (long)zaps];
+    NSString *boltsHex = [NSString stringWithFormat:@"%lx", (long)bolts];
 
     // Concatenate the final lightning string
     if (seconds) {
@@ -69,10 +69,28 @@ NSString* getFormatted(bool seconds) {
 }
 %end
 
+%hook _UIStatusBarTimeItem
+- (void)_create_timeView{
+    %orig;
+    self.timeView.litt_isTimeString = YES;
+}
+
+- (void)_create_shortTimeView{
+    %orig;
+    self.shortTimeView.litt_isTimeString = YES;
+}
+
+- (void)_create_pillTimeView{
+    %orig;
+    self.pillTimeView.litt_isTimeString = YES;
+}
+%end
+
 %hook _UIStatusBarStringView
+%property (nonatomic, assign) BOOL litt_isTimeString;
 
 - (void)setText:(NSString *)text{
-    if([self.text rangeOfString:@":"].location != NSNotFound){
+    if(self.litt_isTimeString){
         %orig(getFormatted(false));
         return;
     }
